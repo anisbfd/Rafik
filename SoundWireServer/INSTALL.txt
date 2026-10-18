@@ -1,0 +1,59 @@
+SoundWire Server Install Instructions for Linux
+-----------------------------------------------
+
+System Setup:
+
+- Open firewall ports 59010 & 59011 UDP. You may do this from the GUI using
+  firewall-config or a similar utility (install it using your package manager
+  if necessary).
+
+- Install Pulse Audio Volume Control (pavucontrol) using your package manager.
+  From the command line use "sudo apt-get install pavucontrol" on Debian/Ubuntu
+  or "sudo dnf install pavucontrol" on Red Hat/Fedora. You may also do this 
+  from the GUI using "Software" or a similar utility.
+
+- Install the portaudio package using your package manager, or from
+  http://www.portaudio.com/download.html
+  If your Linux distribution has the libportaudio2 package it will work
+  as well. Ensure that only one version of PortAudio is installed on your
+  system (if necessary remove packages using your package manager).
+
+- SoundWire Server version 3.0 and later uses Qt5. You may need to install some
+  Qt5 libraries, in particular the Qt5Widgets library and its dependencies. 
+  On Debian/Ubuntu the required package may be called 'libqt5widgets5'.
+  On Red Hat/Fedora the required package may be called 'qt5-qtbase'.
+
+- Install libcurl package. If there is more than one option choose the OpenSSL
+  flavor of libcurl. SoundWire Server will start without libcurl but will not
+  be able to check for updates.
+
+- Install any other packages needed to satisfy shared library dependencies if 
+  SoundWireServer fails to start. You should run it from the command line to
+  see any error messages. If you are unable to get the latest SoundWire Server
+  version running you can try the older Qt4-based SoundWire Server version 2.1.2
+  available for download at GeorgieLabs. In particular if you get library
+  version errors related to GLIBC or GLIBCXX try SoundWire Server version 2.1.2.
+  Note that PortAudio usually displays a large number of errors, so these are
+  suppressed unless you use the -verbose option when running SoundWireServer.
+
+SoundWire Server Program Installation:
+
+1. Add the directory containing these files to your search path. (You can skip
+   this step if you run SoundWireServer from the command line using the full
+   path.)
+
+2. At this point you can start SoundWire Server from the command line by typing
+   SoundWireServer. To run without a GUI or if your system has no X server
+   use the -nogui option. To start it from the desktop do the steps below.
+
+3. Copy the icon file sw-icon.xpm to directory ~/.local/share/icons or some 
+   other standard location for icons.
+
+4. Copy the launcher file SoundWire-Server.desktop to /usr/share/applications
+   to appear in the apps menu and associate the app icon. You can also put the
+   .desktop file on your desktop, if supported.
+
+You may need to modify these instructions depending on your window manager and Linux
+distribution.
+
+(Continue with the README.txt file.)
